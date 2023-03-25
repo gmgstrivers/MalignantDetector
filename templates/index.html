@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Malignant Detector</title>
+    <link rel="icon" type="image/x-icon" sizes="32x32" href="https://lh3.googleusercontent.com/NZdg9reUEQRVhoxFBZx6Qv7CW3p_5rEi40w2_GDhjNsAQ6rnIH_nc1bywV0omS4hd_h4HBDXjUcmm_BDk2T2iZ-tSCLBLCiUF0-gg5DWiyErRJJNEj2GAywD6i5VZjF5oAn2rVMacHHFzIRvEmIymJtCHjEHZ-v_KFZTOcYrkSylJiEXzxI9JwekQsjHVMC4G4vAyK2WWO53YYUNhlAJ5kAvAkcdJ5_qYSH1S6PCAEuksSFkyegR4WOcUsztuHeTBbllKgGSb3DwPOk2dWFyF0-QN8vgIWA66IpOxa0TeFirCmElvKLHjtg097eBfTR1YQh6NCVX8bp_bWed886dhKkSHKpS4nnQuMMBM0_dTFaOVzSi1yYxhxKXrDua5JVH2AnF28F7SXo6D_uWmNyczt1IMH3yZrZY1DxoKJ8KJ3tA6j4dhYlC8ahjsZgQh39CLcb_IpbcVHaJweakotX7E5-byYXGVUXdkjVG-of8tiRMzJtyaNSB-UegTGwO_ek1V5GijgAieRyoTdZWTUGB5_qRMHZnT2tKYDHcA5U2Y_371j5OKHCD1Kj4nMIDPiEl8PtJ8oKV0UUEJXKIxqZhAcFYTxXN0Su7rRuxT3kZGxuH9oJefwSauNwXQ9PDUfSJ4I3nsf2F2T0vIWh3OCNCC30DdWzlO0FoivSjOB_LBsTuGTZgBLQF1k59zK-NOQDtNT46bvbXFbZxQywzT74u160tWkgfiK3pXGAn5jBCnBthYHStgZuxEedYpStEokN7mNXwfIKGX2remYnyKchtPFuQ8SybxkSAMN4M-RhmVexN_inBo5ayUhV6eDGCdg55PfZFViAIMez6O8lwNtQuWvMmhpQP_lSG0crCQT_nxyxHribfh7F_HXjJjGEsP5Yv4ZfoeK5bhZS6gflnguo1ui51QccVkII4JXWZwyU4Wiz8A8r5BZOt8kSLMsV0XUvUwhxVsFp8OtaYd-LVCUfLiNsSSFd2UnATy71iUo0v-Zq03bZtApTTpNd-wyinIVKfArC6g4JkI3H60Tbo57IdQ32fMaJydJDFp3-N3O3BshOVsH9M4TlyUhGnHq56U7VUNEoZR_yA4_iYocJrnJfEV1IHkLnFZIIuDhY=w792-h220-no?authuser=0">
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <script src=
+        "https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity=
+"sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+    </script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap');
+* {
+  box-sizing: border-box;
+  font-family: 'Manrope', sans-serif;
+}
+label {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+input[type=text] {
+  display: block;
+  width: 200px;
+  height: 30px;
+  padding: 0 8px;
+  border-radius: 10px;
+  border: 3px solid black;
+}
+
+input[type=text]:focus {
+  outline: none;
+  border: 3px solid transparent;
+  background-image: linear-gradient(white, white), linear-gradient(315deg, rgb(236, 160, 255), rgb(170, 178, 255), rgb(132, 255, 201));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  animation: bg-hue 2s linear infinite;
+}
+@keyframes bg-hue {
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: linear-gradient(-45deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82,#ee7752, #e73c7e, #23a6d5, #23d5ab);
+  animation: animatedgradient 6s ease infinite;
+  background-size: 300% 300%;
+  object-fit: fit;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+@keyframes animatedgradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+    .btn {
+        background: #5bff76;
+        color: #004B91;
+        padding: 0.5rem 2rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 2rem;
+        cursor: pointer;
+        transition-duration: 0.4s;
+    }
+
+    .btn:hover {
+        background: #fff;
+        box-shadow: 0px 2px 20px 10px #97B1BF;
+        color: #000;
+    }
+form {
+  column-count: 4;
+   column-gap: 40px;
+}
+h1{
+text-align: center;
+font-size: 30px;
+}
+.predict{
+text-align: center;
+color:  #000000;
+font-weight: bold;
+font-size: 50px;
+    position:absolute;
+  width:800px;
+  height:100px;
+  bottom:70px;
+  right:30%;
+}
+#tm{
+  list-style-type: none;
+  position: relative;
+  bottom: 15px; top: 130px;
+}
+#tm a{
+  color: #faff00;
+  font-weight: bold;
+}
+#tm a:hover{
+color: #004B91;
+text-decoration: underline;
+}
+.gmg{
+  position: relative;
+  left: 950px; bottom: 0px; top: 20px;
+  width: 360px;
+  column-count: 2;
+}
+#gmggrp{
+ width:170px;
+ height: 155px;
+}
+</style>
+
+</head>
+
+<body>
+ <div class="login">
+	<h1><u>Malignant Detector</u></h1>
+    <form action="/predict"method="post">
+        <label for="sm">Smoothness Mean:</label>
+    	<input type="text" name="Smoothness Mean" placeholder="Smoothness_Mean" id="sm" required="required" />
+        <br>
+        <label for="fdm">Fractal Dimension Mean:</label>
+        <input type="text" name="Fractal Dimension Mean" placeholder="fractal_dimension_mean" id="fdm" required="required" />
+        <br>
+        <label for="ase">Area se:</label>
+		<input type="text" name="Area se" placeholder="area_se" id="ase" required="required" />
+        <br>
+        <label for="cse">Compactness se:</label>
+		<input type="text" name="Compactness se" placeholder="compactness_se" id="cse" required="required" />
+        <br>
+        <label for="cp">Concave Points se:</label>
+        <input type="text" name="Concave points se" placeholder="concave_points_se" id="cp" required="required" />
+        <br>
+        <label for="fds">Fractal Dimension se:</label>
+        <input type="text" name="Fractal Dimension se" placeholder="fractal_dimension_se" id="fds" required="required" />
+        <br>
+        <br>
+        <label for="aw">Area worst:</label>
+        <input type="text" name="Area worst" placeholder="area_worst" id="aw" required="required" />
+        <br>
+        <label for="cw">Concativity Worst:</label>
+        <input type="text" name="Concativity Worst" id="cw" placeholder="concativity_worst" required="required" />
+        <br>
+        <label for="syyw">Symmetry Worst:</label>
+        <input type="text" name="Symmetry Worst" placeholder="symmetry_worst" id="syyw" required="required" />
+        <br>
+        <br>
+        <label for="symm">Symmetry Mean:</label>
+        <input type="text" name="Symmetry Mean" placeholder="symmetry_mean" id="symm" required="required" />
+        <br>
+        <label for="tse">Texture se:</label>
+        <input type="text" name="Texture se" placeholder="texture_se" id="tse" required="required" />
+        <br>
+        <label for="sse">Smoothness se:</label>
+        <input type="text" name="Smoothness se" placeholder="smoothness_se" id="sse" required="required" />
+        <br>
+
+        <label for="csse">Concativity se:</label>
+        <input type="text" name="Concativity se" placeholder="concativity_se" id="csse" required="required" />
+        <br>
+        <label for="symmse">Symmetry se:</label>
+        <input type="text" name="Symmetry se" placeholder="symmetry_se" id="symmse" required="required" />
+        <br>
+        <label for="tw">Texture Worst:</label>
+        <input type="text" name="Texture Worst" placeholder="texture_worst" id="tw" required="required" />
+        <br>
+        <label for="sw">Smoothness Worst:</label>
+        <input type="text" name="Smoothness Worst" placeholder="smoothness_worst" id="sw" required="required" />
+        <br>
+        <label for="cpw">Concave Points Worst:</label>
+        <input type="text" name="Concave Points Worst" placeholder="concave_points_worst" id="cpw" required="required" />
+        <br>
+        <label for="fdw">Fractal Dimension Worst:</label>
+        <input type="text" name="Fractal Dimension Worst" placeholder="fractal_dimension_worst" id="fdw" required="required" />
+        <br>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+        &nbsp &nbsp &nbsp
+        <button type="reset" class="btn btn-primary btn-block btn-large" onclick="window.location.href='/';">Reset</button>
+    </form>
+     <div class="gmg">
+         <h4>Made by Team GMG</h4>
+         <img id="gmggrp" src="https://assets.leetcode.com/users/avatars/avatar_1651088319.png" alt="Group Photo"></img>
+         <div id="tm">
+             <li><a href="https://www.linkedin.com/in/rajesh-kumar-sahoo-9b3095189/" target="_blank">Rajesh Kumar Sahoo</a></li>
+             <li><a href="https://linkedin.com/in/kalingaabhisek" target="_blank">Kalinga Abhisek</a></li>
+             <li><a href="https://linkedin.com/in/amanagrawal20156" target="_blank">Aman Agrawal</a></li>
+         </div>
+     </div>
+   <br>
+   <br>
+<div class="predict"></div>
+
+ </div>
+
+
+</body>
+</html>
